@@ -56,17 +56,8 @@ client.auth(email = '""" + str(email) + """', password = '""" + str(password) + 
 
 ndc_Id = '""" + str(ndc_Id) + """'
 thread_Id = '""" + str(thread_Id) + """'
-answ = int('""" + str(answ) + """')
 msg = '""" + str(msg) + """'
 
-def join_and_leave():
-	while True:
-		try:
-			client.leave_thread(ndc_Id=ndc_Id, thread_Id=thread_Id)
-			client.join_thread(ndc_Id=ndc_Id, thread_Id=thread_Id)
-		except BaseException:
-			return
-			
 			
 def send_message(msg):
 	while True:
@@ -77,8 +68,7 @@ def send_message(msg):
 			return
 
 for x in range(50):
-    if answ == 2: Thread(target = join_and_leave).start()
-    if answ == 1: Thread(target = send_message, args = (msg,)).start()""")
+    Thread(target = send_message, args = (msg,)).start()""")
 
 	os.system(f"python spam/{lol}.py & next")
         
